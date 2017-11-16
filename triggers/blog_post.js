@@ -17,7 +17,7 @@ module.exports = {
 
   noun: 'Blog_Post',
   display: {
-    label: 'Blog Post',
+    label: 'New Blog Post',
     description: 'Trigger when a new recipe is added.'
   },
 

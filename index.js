@@ -18,6 +18,7 @@ const App = {
   authentication: authentication,
 
   beforeRequest: [
+    includeCredentialsInHeader
   ],
 
   afterResponse: [

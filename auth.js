@@ -1,7 +1,7 @@
 const test = (z, bundle) => {
 
   return z.request({
-    url: 'https://api.hubapi.com/content',
+    url: 'https://api.hubapi.com/content/api/v2/blog-posts',
   }).then((response) => {
     if (response.status === 400) {
       throw new Error(`Authentication failed due to the following error. ${response}`);
