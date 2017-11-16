@@ -21,6 +21,25 @@ describe('triggers', () => {
       })
       .catch(done);
   });
+  
+  
+   it('should get blog_posts sorted by updated', (done) => {
+    const bundle = {
+      authData: authData
+    };
+
+    appTester(App.triggers.blog_post.operation.perform, bundle)
+      .then(results => {
+        results.length.should.be.above(0);
+        var one = results[0].updated;
+        var two = results[1].updated;
+        
+        var diff = (one - two);
+        diff.should.be.above(0);
+        done();
+      })
+      .catch(done);
+  });
 
 
 });

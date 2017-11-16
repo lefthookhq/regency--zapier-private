@@ -1,14 +1,35 @@
+let _ = require('underscore');
+
 const listRecipes = (z, bundle) => {
 
+  var date = (Date.now() - 10800000);
+
   const requestOptions = {
-    url: 'http://57b20fb546b57d1100a3c405.mockapi.io/api/recipes',
+    url: 'https://api.hubapi.com/content/api/v2/blog-posts',
     params: {
-      style: bundle.inputData.style
+      limit: 500,
+      updated__gt: date
     }
   };
 
   return z.request(requestOptions)
-    .then((response) => JSON.parse(response.content));
+    .then((response) =>{ 
+      if(response.status !== 200){
+        throw Error(`Unexpected status code. ${response.status}`);
+      }
+      
+      
+      var parsed = JSON.parse(response.content).objects;
+      
+      if(parsed.length === 0){
+        return []
+      }
+      
+      //sort by updated id
+      var sorted = _.sortBy(parsed, 'updated').reverse();
+      
+      return sorted;
+    });
 };
 
 
@@ -22,13 +43,7 @@ module.exports = {
   },
 
   operation: {
-
-    inputFields: [
-      {key: 'style', type: 'string',  helpText: 'Which styles of cuisine this should trigger on.'}
-    ],
-
     perform: listRecipes
-
   },
 
 };
