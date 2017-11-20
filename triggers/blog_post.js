@@ -38,8 +38,8 @@ module.exports = {
 
   noun: 'Blog_Post',
   display: {
-    label: 'New Blog Post',
-    description: 'Trigger when a new recipe is added.'
+    label: 'Updated Blog Post',
+    description: 'Trigger when a blog post is updated'
   },
 
   operation: {
