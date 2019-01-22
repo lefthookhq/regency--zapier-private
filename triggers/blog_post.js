@@ -2,13 +2,14 @@ let _ = require('underscore');
 
 const listRecipes = (z, bundle) => {
 
-  var date = (Date.now() - 10800000);
+  var date = (Date.now() - 28800000);
 
   const requestOptions = {
     url: 'https://api.hubapi.com/content/api/v2/blog-posts',
     params: {
       limit: 500,
-      updated__gt: date
+      updated__gte: date,
+      order_by: '-updated'
     }
   };
 
@@ -20,15 +21,18 @@ const listRecipes = (z, bundle) => {
       
       
       var parsed = JSON.parse(response.content).objects;
-      
+      parsed.forEach(function(blog_post) {
+      blog_post.originalId = blog_post.id;
+      blog_post.id = blog_post.id + '-' + blog_post.updated;
+    });
       if(parsed.length === 0){
         return []
       }
       
       //sort by updated id
-      var sorted = _.sortBy(parsed, 'updated').reverse();
+      // var sorted = _.sortBy(parsed, 'updated').reverse();
       
-      return sorted;
+      return parsed;
     });
 };
 

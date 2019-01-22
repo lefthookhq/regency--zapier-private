@@ -17,7 +17,7 @@ module.exports = {
       type: 'password',
       required: true,
       label: 'API Key',
-      helpText: "Both your Knack Application ID and API Key are available in your builder’s settings which can be found by clicking the name of your app in the upper-left corner, then Settings, then API & Code."
+      helpText: "You can find your Hubspot API Key by navigating to Settings > Integrations > API key."
     }
   ],
   test: test

@@ -1,6 +1,6 @@
 {
   "name": "regency_private_app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A private app for regency using hubspot blogs",
   "repository": "zapier/zapier-platform-example-app-trigger",
   "homepage": "https://zapier.com/",
